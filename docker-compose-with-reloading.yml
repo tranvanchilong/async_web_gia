@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  app:
+    image: registry.gitlab.com/q347/crawl_findthisbest:v0.1
+    container_name: crawl_findthisbest
+    command: python3 crawl_findthisbest.py
+    ports:
+      - "5001:8000"
+    restart: always
+    volumes:
+      - ./app:/app
+
+  live-reloader:
+    image: apogiatzis/livereloading
+    container_name: livereloader
+    privileged: true
+    environment:
+      - RELOAD_DELAY=1.5 # seconds
+      - RELOAD_CONTAINER=test-container-name
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ".:/code"

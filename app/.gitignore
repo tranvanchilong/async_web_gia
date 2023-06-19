@@ -1,0 +1,9 @@
+logs*
+*.log
+.history
+venv*
+__pycache__*
+.vscode
+test*.py
+logs
+data*

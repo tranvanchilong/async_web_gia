@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  app:
+    image: registry.gitlab.com/q347/crawl_findthisbest:v0.3
+    container_name: crawl_findthisbest
+    command: python3 crawl_web_gia.py
+    ports:
+      - "5001:8000"
+    restart: always
+    volumes:
+      - ./app:/app
